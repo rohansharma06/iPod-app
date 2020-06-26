@@ -1,0 +1,57 @@
+.container{
+    position: relative;
+    height: 200px;
+    width: 250px;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+}
+
+.outer-circle{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-btn{
+    position: absolute;
+    top: 12px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: black;
+}
+.play-pause-btn{
+    position: absolute;
+    bottom: 10px; 
+    font-size: 30px;
+    color: black;
+}
+.prev-btn{
+    position: absolute;
+    left: 10px;
+    font-size: 25px;
+    color: black;
+}
+.next-btn{
+    position: absolute;
+    right: 10px;
+    font-size: 25px;
+    color: black;
+}
+.inner-circle{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: grey;
+}
+
+.menu-btn, .play-pause-btn, .prev-btn, .next-btn:hover{
+    cursor: pointer;
+}
