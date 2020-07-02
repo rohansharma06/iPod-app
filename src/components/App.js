@@ -5,6 +5,7 @@ import ZingTouch from 'zingtouch';
 
 class App extends React.Component {
 
+  //---- initializing the state
   constructor(){
     super();
 
@@ -21,11 +22,11 @@ class App extends React.Component {
     }
   }
 
+  //---- manage how to make rotake function
   handleRotate = (props) => {
     // console.log('roate');
     const target = document.getElementById('outer-circle');
     const zt = new ZingTouch.Region(target);
-    const { menu, submenu } = this.state;
     let angle = 0;
     //console.log("rotae",menu);
     zt.bind(target, 'rotate', (e) => {
@@ -33,24 +34,30 @@ class App extends React.Component {
       angle = angle + e.detail.distanceFromLast;
       //console.log(angle);
 
-      //---- select songs
-      //console.log("ahbkaj:",menu);
+      
+      //--- if menu and submenu id not selected then dont do rotation
       if(!this.state.menu && !this.state.submenu){
         return;
       }
+
+      //---- select songs
       if(((angle <= 30 && angle >= 0)||(angle <= 0 && angle > -30)) && (this.state.menu && !this.state.submenu)){
 
           console.log('song selected');
+
+          //---- selecting the all list element  
           let song = document.getElementById('song');
           let developer = document.getElementById('developer');
           let games = document.getElementById('games');
           let setting = document.getElementById('setting');
           
+          //---- changing css style (select the particular element)
           song.classList='select';
           games.classList='unselect';
           setting.classList='unselect';
           developer.classList='unselect';
           
+          //---- chaging the state
           this.setState({
             song : true,
             games : false,
@@ -63,16 +70,19 @@ class App extends React.Component {
       //---- select games
       if(((angle <= 60 && angle>=30)||(angle <= -30 && angle > -60)) && (this.state.menu && !this.state.submenu)){
         console.log('games selected');
+        //---- selecting the all list element
         let song = document.getElementById('song');
         let developer = document.getElementById('developer');
         let games = document.getElementById('games');
         let setting = document.getElementById('setting');
         
+        //---- changing css style (select the particular element)
         song.classList='unselect';
         games.classList='select';
         setting.classList='unselect';
         developer.classList='unselect';
         
+        //---- chaging the state
         this.setState({
           song : false,
           games : true,
@@ -85,16 +95,19 @@ class App extends React.Component {
       //---- select setting
       if(((angle <= 90 && angle>=60)||(angle <= -60 && angle > -90)) && (this.state.menu && !this.state.submenu)){
         console.log('setting selected');
+        //---- selecting the all list element
         let song = document.getElementById('song');
         let developer = document.getElementById('developer');
         let games = document.getElementById('games');
         let setting = document.getElementById('setting');
         
+        //---- changing css style (select the particular element)
         song.classList='unselect';
         games.classList='unselect';
         setting.classList='select';
         developer.classList='unselect';
         
+        //---- chaging the state
         this.setState({
           song : false,
           games : false,
@@ -107,16 +120,19 @@ class App extends React.Component {
       //---- select developer
       if(((angle <= 120 && angle>=90)||(angle <= -90 && angle > -120)) && (this.state.menu && !this.state.submenu)){
         console.log('developer selected');
+         //---- selecting the all list element
         let song = document.getElementById('song');
         let developer = document.getElementById('developer');
         let games = document.getElementById('games');
         let setting = document.getElementById('setting');
         
+        //---- changing css style (select the particular element)
         song.classList='unselect';
         games.classList='unselect';
         setting.classList='unselect';
         developer.classList='select';
         
+        //---- chaging the state
         this.setState({
           song : false,
           games : false,
@@ -127,37 +143,42 @@ class App extends React.Component {
       }
 
       //----- handling sub-menu rotation
-      console.log("show",this.state.submenu,menu);
+      //console.log("show",this.state.submenu,menu);
       if(this.state.submenu){
        
         if(((angle <= 30 && angle >= 0)||(angle <= 0 && angle > -30))){
-
           console.log('all songs selected');
+          //---- selecting the all list element
           let allsong = document.getElementById('allsong');
           let album = document.getElementById('album');
           let artist = document.getElementById('artist');
           
+          //---- changing css style (select the particular element)
           allsong.classList='select';
           album.classList='unselect';
           artist.classList='unselect';
           
+          //---- chaging the state
           this.setState({
             allsong : true,
             album : false,
             artist : false
           })
         }
-        //---- album
+        //---- select album
         if(((angle <= 60 && angle>=30)||(angle <= -30 && angle > -60))){
           console.log('album selected');
+          //---- selecting the all list element
           let allsong = document.getElementById('allsong');
           let album = document.getElementById('album');
           let artist = document.getElementById('artist');
           
+          //---- changing css style (select the particular element)
           allsong.classList='unselect';
           album.classList='select';
           artist.classList='unselect';
           
+          //---- chaging the state
           this.setState({
             allsong : false,
             album : true,
@@ -168,14 +189,17 @@ class App extends React.Component {
         //---- artist
         if(((angle <= 90 && angle>=60)||(angle <= -60 && angle > -90))){
           console.log('artist selected');
+          //---- selecting the all list element
           let allsong = document.getElementById('allsong');
           let album = document.getElementById('album');
           let artist = document.getElementById('artist');
           
+          //---- changing css style (select the particular element)
           allsong.classList='unselect';
           album.classList='unselect';
           artist.classList='select';
           
+          //---- chaging the state
           this.setState({
             allsong : false,
             album : false,
@@ -187,10 +211,11 @@ class App extends React.Component {
     });
   }
 
+  //---- handle click on menu button
   handleMenuClick = (props) => {
     console.log("handleMenu Click");
     //console.log("menu before",this.state.menu);
-    const { menu, submenu } = this.state;
+    const { menu } = this.state;
     this.setState({
       menu : !menu,
       submenu: false
@@ -199,22 +224,33 @@ class App extends React.Component {
     display.style.backgroundImage="url('https://i.pinimg.com/originals/6a/96/b2/6a96b2d2771c2c80139ef67545cccf6b.jpg')";
   }
 
+  //---- to hide menu when select the particular list item
   handlechangestate = () =>{
     const { menu } = this.state;
     this.setState({
       menu : !menu
     })
   }
+
+  //---- handle state of submenu 
   handleSubMenuState = () => {
     this.setState({
       submenu: false
     })
   }
 
+
+  //---- handle click on inner circle (selecting list items)
   handleInnerCirlceClick = (props) =>{
+    
+    //--- stop propagation to outer div
+    props.stopPropagation(onclick);
+    
     const { menu, song, games, setting, developer, submenu, allsong, album, artist } = this.state;
     console.log(this.state);
     let display = document.getElementById('screen-container');
+
+    //----- if MENU is open
     if(menu){
       if(song){
         // let list=document.getElementById('menu-list');
@@ -241,9 +277,11 @@ class App extends React.Component {
         this.handlechangestate();
       }
     }
+
+    //---- if SUB-MENU is open
     if(submenu){
       if(allsong){
-        display.style.backgroundImage="url('https://media.idownloadblog.com/wp-content/uploads/2014/01/CCNowPlaying-01.png')";
+        display.style.backgroundImage="url('https://lh3.googleusercontent.com/GMpK_XSbZyr8pM-XDrYJ7IzS1MkXOab9JWMEasyWYX5CFjHTngoja9eYqwwPhmN5mzY=w412-h220-rw')";
         this.handleSubMenuState();
       }
       if(album){

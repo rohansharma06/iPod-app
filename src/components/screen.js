@@ -7,8 +7,10 @@ const Screen= (props) =>{
   return (
     <div className="screen-container" id="screen-container">
       <a href="https://github.com/rohansharma06?tab=repositories">
-        <img id="git" src="https://image.flaticon.com/icons/svg/733/733609.svg"/>
+        <img id="git" src="https://image.flaticon.com/icons/svg/733/733609.svg" alt="gitImage" />
       </a>
+
+      {/* if menu = true the show menu */}
       { menu ?
         <div className="menu">
           <span className="heading">Menu</span>
@@ -21,6 +23,8 @@ const Screen= (props) =>{
        </div>
        : null
       }
+
+      {/* if submenu = true the show submenu */}
       {
         !menu && submenu ?
         <div className="menu">
