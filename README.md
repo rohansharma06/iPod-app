@@ -1,13 +1,34 @@
 # Ipod-App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an UI of an iPod.
 
-    
+This project was build using React, Html and CSS.
+
+This project use `ZingTouch` to move the mouse in a circular fashion and select options.
+
+
+# Functionality
+
+`Menu`
+
+* On clicking menu list of menu come on screen.
+* Click and hold on the circular menu and move the mouse in a circular fashion inside the menu boundary (white circle is the menu) to navigate in the iPod menu
+* On clicking in the center wheel (grey circle) will redirect to the selected menu.
+
+
+### Demo
+
 ![demo](/gif/ipodApp.gif)
-    
-## Available Scripts
 
-In the project directory, you can run:
+
+## Getting Started
+1. Clone the project.
+2. Go to folder.
+3. Run following command.
+    ``` 
+    npm install
+    ```
+4. Run command: `npm start`.
 
 ### `npm start`
 
@@ -17,10 +38,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
+## Available Scripts
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In the project directory, you can run:
 
 ### `npm run build`
 
