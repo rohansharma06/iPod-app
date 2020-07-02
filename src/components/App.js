@@ -13,7 +13,11 @@ class App extends React.Component {
       song : false,
       games : false,
       setting : false,
-      developer : false
+      developer : false,
+      submenu : false,
+      allsong : false,
+      album : false,
+      artist : false
     }
   }
 
@@ -21,7 +25,7 @@ class App extends React.Component {
     // console.log('roate');
     const target = document.getElementById('outer-circle');
     const zt = new ZingTouch.Region(target);
-    const { menu } = this.state;
+    const { menu, submenu } = this.state;
     let angle = 0;
     //console.log("rotae",menu);
     zt.bind(target, 'rotate', (e) => {
@@ -31,10 +35,10 @@ class App extends React.Component {
 
       //---- select songs
       //console.log("ahbkaj:",menu);
-      if(!this.state.menu){
+      if(!this.state.menu && !this.state.submenu){
         return;
       }
-      if((angle <= 30 && angle >= 0)||(angle <= 0 && angle > -30) && menu){
+      if(((angle <= 30 && angle >= 0)||(angle <= 0 && angle > -30)) && (this.state.menu && !this.state.submenu)){
 
           console.log('song selected');
           let song = document.getElementById('song');
@@ -52,11 +56,12 @@ class App extends React.Component {
             games : false,
             setting : false,
             developer : false,
+            submenu : false
           })
       }
 
       //---- select games
-      if((angle <= 60 && angle>=30)||(angle <= -30 && angle > -60) && menu){
+      if(((angle <= 60 && angle>=30)||(angle <= -30 && angle > -60)) && (this.state.menu && !this.state.submenu)){
         console.log('games selected');
         let song = document.getElementById('song');
         let developer = document.getElementById('developer');
@@ -72,12 +77,13 @@ class App extends React.Component {
           song : false,
           games : true,
           setting : false,
-          developer : false
+          developer : false,
+          submenu : false
         })
       }
 
       //---- select setting
-      if((angle <= 90 && angle>=60)||(angle <= -60 && angle > -90) && menu){
+      if(((angle <= 90 && angle>=60)||(angle <= -60 && angle > -90)) && (this.state.menu && !this.state.submenu)){
         console.log('setting selected');
         let song = document.getElementById('song');
         let developer = document.getElementById('developer');
@@ -93,12 +99,13 @@ class App extends React.Component {
           song : false,
           games : false,
           setting : true,
-          developer : false
+          developer : false,
+          submenu : false
         })
       }
 
       //---- select developer
-      if((angle <= 120 && angle>=90)||(angle <= -90 && angle > -120) && menu){
+      if(((angle <= 120 && angle>=90)||(angle <= -90 && angle > -120)) && (this.state.menu && !this.state.submenu)){
         console.log('developer selected');
         let song = document.getElementById('song');
         let developer = document.getElementById('developer');
@@ -114,8 +121,67 @@ class App extends React.Component {
           song : false,
           games : false,
           setting : false,
-          developer : true
+          developer : true,
+          submenu : false
         })
+      }
+
+      //----- handling sub-menu rotation
+      console.log("show",this.state.submenu,menu);
+      if(this.state.submenu){
+       
+        if(((angle <= 30 && angle >= 0)||(angle <= 0 && angle > -30))){
+
+          console.log('all songs selected');
+          let allsong = document.getElementById('allsong');
+          let album = document.getElementById('album');
+          let artist = document.getElementById('artist');
+          
+          allsong.classList='select';
+          album.classList='unselect';
+          artist.classList='unselect';
+          
+          this.setState({
+            allsong : true,
+            album : false,
+            artist : false
+          })
+        }
+        //---- album
+        if(((angle <= 60 && angle>=30)||(angle <= -30 && angle > -60))){
+          console.log('album selected');
+          let allsong = document.getElementById('allsong');
+          let album = document.getElementById('album');
+          let artist = document.getElementById('artist');
+          
+          allsong.classList='unselect';
+          album.classList='select';
+          artist.classList='unselect';
+          
+          this.setState({
+            allsong : false,
+            album : true,
+            artist : false
+          })
+        }
+  
+        //---- artist
+        if(((angle <= 90 && angle>=60)||(angle <= -60 && angle > -90))){
+          console.log('artist selected');
+          let allsong = document.getElementById('allsong');
+          let album = document.getElementById('album');
+          let artist = document.getElementById('artist');
+          
+          allsong.classList='unselect';
+          album.classList='unselect';
+          artist.classList='select';
+          
+          this.setState({
+            allsong : false,
+            album : false,
+            artist : true
+          })
+        }
       }
 
     });
@@ -124,9 +190,10 @@ class App extends React.Component {
   handleMenuClick = (props) => {
     console.log("handleMenu Click");
     //console.log("menu before",this.state.menu);
-    const { menu } = this.state;
+    const { menu, submenu } = this.state;
     this.setState({
-      menu : !menu
+      menu : !menu,
+      submenu: false
     })
     let display = document.getElementById('screen-container');
     display.style.backgroundImage="url('https://i.pinimg.com/originals/6a/96/b2/6a96b2d2771c2c80139ef67545cccf6b.jpg')";
@@ -137,18 +204,26 @@ class App extends React.Component {
     this.setState({
       menu : !menu
     })
-    
   }
+  handleSubMenuState = () => {
+    this.setState({
+      submenu: false
+    })
+  }
+
   handleInnerCirlceClick = (props) =>{
-    const { menu, song, games, setting, developer } = this.state;
+    const { menu, song, games, setting, developer, submenu, allsong, album, artist } = this.state;
     console.log(this.state);
     let display = document.getElementById('screen-container');
     if(menu){
       if(song){
         // let list=document.getElementById('menu-list');
         // list.innerHTML=`<li>Artist</li>`;
-        display.style.backgroundImage="url('https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569__340.jpg')";
+        display.style.backgroundImage="url('https://media.idownloadblog.com/wp-content/uploads/2018/03/Apple-Music-icon-002.jpg')";
         this.handlechangestate();
+        this.setState({
+          submenu : !submenu
+        })
       }
       else if(games){
         //console.log('here');
@@ -166,15 +241,29 @@ class App extends React.Component {
         this.handlechangestate();
       }
     }
+    if(submenu){
+      if(allsong){
+        display.style.backgroundImage="url('https://media.idownloadblog.com/wp-content/uploads/2014/01/CCNowPlaying-01.png')";
+        this.handleSubMenuState();
+      }
+      if(album){
+        display.style.backgroundImage="url('https://community.spotify.com/t5/image/serverpage/image-id/80164iEB9345FE9C8A7BA1/image-size/large?v=1.0&px=999')";
+        this.handleSubMenuState();
+      }
+      if(artist){
+        display.style.backgroundImage="url('https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2020/02/pjimage-1582246037.jpg')";
+        this.handleSubMenuState();
+      }
+    }
   
   }
 
   render(){
-    const { menu, song, developer, setting, games } = this.state;
+    const { menu, submenu } = this.state;
     //console.log("app Menu",menu);
     return (
       <div className="App">
-        < Screen menu ={ menu} />
+        < Screen menu ={ menu} submenu= { submenu } />
         < Wheel 
           onMenuClick = {this.handleMenuClick}
           onhandleRotate = {this.handleRotate}

@@ -99,6 +99,13 @@ body {
     background-position: center;
     box-shadow: 5px 5px 5px black;
 }
+#git{
+    position: absolute;
+    right: 10px;
+    height: 30px;
+    width: 30px;
+    /* z-index: -1; */
+}
 .menu{
     height: 195px;
     width: 140px;
