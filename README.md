@@ -6,7 +6,7 @@ This project was build using React, Html and CSS.
 
 This project use `ZingTouch` to move the mouse in a circular fashion and select options.
 
-URL: [URL](https://rohansharma06.github.io/iPod-app/)
+Hosted : [Click Here..](https://rohansharma06.github.io/iPod-app/)
 
 # Functionality
 
