@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/iPod-app/static/css/main.f0bf4e65.chunk.css",
+    "main.js": "/iPod-app/static/js/main.8fe0cc99.chunk.js",
+    "main.js.map": "/iPod-app/static/js/main.8fe0cc99.chunk.js.map",
+    "runtime-main.js": "/iPod-app/static/js/runtime-main.54037b8d.js",
+    "runtime-main.js.map": "/iPod-app/static/js/runtime-main.54037b8d.js.map",
+    "static/js/2.f87b9c93.chunk.js": "/iPod-app/static/js/2.f87b9c93.chunk.js",
+    "static/js/2.f87b9c93.chunk.js.map": "/iPod-app/static/js/2.f87b9c93.chunk.js.map",
+    "index.html": "/iPod-app/index.html",
+    "precache-manifest.6ffa32881403a4f3d682252980d1d528.js": "/iPod-app/precache-manifest.6ffa32881403a4f3d682252980d1d528.js",
+    "service-worker.js": "/iPod-app/service-worker.js",
+    "static/css/main.f0bf4e65.chunk.css.map": "/iPod-app/static/css/main.f0bf4e65.chunk.css.map",
+    "static/js/2.f87b9c93.chunk.js.LICENSE.txt": "/iPod-app/static/js/2.f87b9c93.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.54037b8d.js",
+    "static/js/2.f87b9c93.chunk.js",
+    "static/css/main.f0bf4e65.chunk.css",
+    "static/js/main.8fe0cc99.chunk.js"
+  ]
+}
